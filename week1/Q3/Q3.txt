@@ -1,0 +1,12 @@
+Part 3
+
+1. 'contracts/circuits/LessThan10.circom' implements a circuit that verifies an input is less than 10 using the LessThan template.
+Study how the template is used in this circuit. What does the 32 in Line 9 stand for?
+
+32 represents the number of bits the input can have.
+
+
+What are the possible outputs for the LessThan template and what do they mean respectively?
+(If you cannot figure this out by reading the code alone, feel free to compile the circuit and test with different input values.)
+
+Possible outputs for LessThan are booleans values; true and false.
