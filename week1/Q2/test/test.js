@@ -92,7 +92,7 @@ describe('Multiplier3 with Groth16', function () {
 
   beforeEach(async function () {
     //[assignment] insert your script here
-    Verifier = await ethers.getContractFactory('MultiplierVerifier')
+    Verifier = await ethers.getContractFactory('Multiplier3Verifier')
     verifier = await Verifier.deploy()
     await verifier.deployed()
   })

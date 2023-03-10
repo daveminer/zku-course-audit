@@ -13,7 +13,7 @@ template Multiplier3 () {
 
    // Part 2, #3
    // Modify Multiplier3.circom to perform a multiplication of
-   // hree input signals under the restrictions of circom.
+   // three input signals under the restrictions of circom.
    ab <-- a * b;
 
    // Constraints.
