@@ -8,6 +8,7 @@ include "../node_modules/circomlib-matrix/circuits/matElemSum.circom";
 include "../node_modules/circomlib-matrix/circuits/matElemPow.circom";
 include "../node_modules/circomlib/circuits/poseidon.circom";
 //[assignment] include your RangeProof template here
+include "./RangeProof.circom";
 
 template sudoku() {
     signal input puzzle[9][9]; // 0  where blank
@@ -26,6 +27,8 @@ template sudoku() {
             assert(puzzle[i][j]<=9); //[assignment] change assert() to use your created RangeProof instead
             assert(solution[i][j]>=0); //[assignment] change assert() to use your created RangeProof instead
             assert(solution[i][j]<=9); //[assignment] change assert() to use your created RangeProof instead
+
+            //assert(RangeProof)
             mul.a[i][j] <== puzzle[i][j];
             mul.b[i][j] <== solution[i][j];
         }
@@ -49,9 +52,20 @@ template sudoku() {
 
     component square = matElemPow(9,9,2);
 
+    component rangeProof[9][9];
+
     for (var i=0; i<9; i++) {
         for (var j=0; j<9; j++) {
             square.a[i][j] <== add.out[i][j];
+
+            rangeProof[i][j] = RangeProof(4);
+
+            rangeProof[i][j].range[0] <== 1;
+            rangeProof[i][j].range[1] <== 9;
+
+            rangeProof[i][j].in <== add.out[i][j];
+
+            rangeProof[i][j].out === 1;
         }
     }
 
